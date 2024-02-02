@@ -1,0 +1,1 @@
+enum TextPlusType { bold, none }
