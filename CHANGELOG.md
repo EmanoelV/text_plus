@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.1.0 (2023-02-02)
 
-* TODO: Describe initial release.
+### Features
+- add bold text support
