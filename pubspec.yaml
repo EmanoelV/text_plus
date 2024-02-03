@@ -1,6 +1,6 @@
 name: text_plus
 description: "This pakcage is a wrapper for the Text widget that allows you to use the same widget with different styles in the same text."
-version: 0.1.0
+version: 0.1.2
 repository: https://github.com/EmanoelV/text_plus
 
 environment:
