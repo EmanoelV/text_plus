@@ -20,8 +20,12 @@ List<Map> formatText(String fullText) {
               'type': TextPlusType.none
             });
           }
+
           formattedText.add({
-            'text': text.substring(match.start + 1, match.end - 1),
+            'text': text.substring(
+              match.start + type.charactersToBeRemoved.first.length,
+              match.end - type.charactersToBeRemoved.first.length,
+            ),
             'type': type
           });
           start = match.end;

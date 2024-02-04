@@ -23,7 +23,7 @@ class TextPlusExample extends StatelessWidget {
     return const Scaffold(
       body: Center(
         child: TextPlus(
-          'Hello _ world_!, this is *simple* example *text* with _multistyles_',
+          'Hello _ world_!, ..this.. is *simple* ~example~ *text* with _multistyles_',
           style: TextStyle(fontSize: 64),
           textAlign: TextAlign.center,
         ),
