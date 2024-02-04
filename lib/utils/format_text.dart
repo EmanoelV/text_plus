@@ -19,8 +19,8 @@ List<Map> formatText(String text) {
 
 /// split text into a list of strings when having a pattern
 List<String> splitText(String text) {
-  if (text.contains(RegExp(r'\*(.*?)\*'))) {
-    final boldRegex = RegExp(r'\*(.*?)\*');
+  final boldRegex = RegExp(r'\*(.*?)\*');
+  if (text.contains(boldRegex)) {
     List<String> splitedText = [];
     final matches = boldRegex.allMatches(text);
     int start = 0;

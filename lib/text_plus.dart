@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:text_plus/text_plus_type_entity.dart';
 import 'package:text_plus/utils/format_text.dart';
 
+/// Text widget that allows you to use the same widget with different styles in the same text.
 class TextPlus extends StatelessWidget {
   final String text;
   final Locale? locale;
