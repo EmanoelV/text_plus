@@ -8,9 +8,9 @@ This pakcage is a wrapper for the Text widget that allows you to use the same wi
 
 ```dart
 TextPlus(
-    'Hello _ world_!, this is *simple* example *text* with _multistyles_',
+    'Hello _ world_!, ..this.. is *simple* ~example~ *text* with _multistyles_',
     style: TextStyle(fontSize: 64),
     textAlign: TextAlign.center,
 )
 ```
-![Result](https://raw.githubusercontent.com/EmanoelV/text_plus/master/assets/Screenshot_1707048740.png)
+![Result](https://raw.githubusercontent.com/EmanoelV/text_plus/master/assets/result.png)
