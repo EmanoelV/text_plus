@@ -13,3 +13,4 @@ TextPlus(
     textAlign: TextAlign.center,
 )
 ```
+![Result](https://raw.githubusercontent.com/EmanoelV/text_plus/master/assets/Screenshot_1707048740.png)
