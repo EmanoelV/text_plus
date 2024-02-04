@@ -3,3 +3,9 @@
 ### Features
 - add bold text support
 - apply pub recommendations
+
+## 0.2.0 (2023-02-04)
+
+### Features
+- add italic text support
+- refactored code

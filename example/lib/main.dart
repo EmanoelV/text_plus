@@ -22,7 +22,11 @@ class TextPlusExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: TextPlus('Hello *world*!, this is *bold* text *example*.'),
+        child: TextPlus(
+          'Hello _ world_!, this is *simple* example *text* with _multistyles_',
+          style: TextStyle(fontSize: 64),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

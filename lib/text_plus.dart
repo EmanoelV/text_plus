@@ -44,16 +44,8 @@ class TextPlus extends StatelessWidget {
     final List<Map> formattedText = formatText(text);
     final List<TextSpan> textSpans = [];
     for (final Map text in formattedText) {
-      if (text['type'] == TextPlusType.bold) {
-        textSpans.add(
-          TextSpan(
-            text: text['text'],
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        );
-      } else {
-        textSpans.add(TextSpan(text: text['text']));
-      }
+      final TextPlusType type = text['type'];
+      textSpans.add(type.getSpan(text['text']));
     }
     return textSpans;
   }

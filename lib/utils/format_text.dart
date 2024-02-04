@@ -1,40 +1,78 @@
 import 'package:text_plus/text_plus_type_entity.dart';
 
-/// split text enclosed in pattern *into* a list if needed
-List<Map> formatText(String text) {
-  final splitedText = splitText(text);
+/// split text enclosed in pattern into a list if needed
+List<Map> formatText(String fullText) {
+  final splitedText = splitAllPattern(fullText);
   final List<Map> formattedText = [];
   for (final String text in splitedText) {
-    if (text.contains(RegExp(r'\*(.*?)\*'))) {
-      formattedText.add({
-        'text': text.substring(1, text.length - 1),
-        'type': TextPlusType.bold
-      });
-    } else {
+    bool hadMatch = false;
+    for (final TextPlusType type in TextPlusType.values) {
+      if (type == TextPlusType.none) continue;
+      final regex = RegExp(type.pattern);
+      if (text.contains(regex)) {
+        hadMatch = true;
+        final matches = regex.allMatches(text);
+        int start = 0;
+        for (final match in matches) {
+          if (start != match.start) {
+            formattedText.add({
+              'text': text.substring(start, match.start),
+              'type': TextPlusType.none
+            });
+          }
+          formattedText.add({
+            'text': text.substring(match.start + 1, match.end - 1),
+            'type': type
+          });
+          start = match.end;
+        }
+        if (start != text.length) {
+          formattedText.add({
+            'text': text.substring(start, text.length),
+            'type': TextPlusType.none
+          });
+        }
+      }
+    }
+    if (!hadMatch) {
       formattedText.add({'text': text, 'type': TextPlusType.none});
+      hadMatch = false;
     }
   }
   return formattedText;
 }
 
 /// split text into a list of strings when having a pattern
-List<String> splitText(String text) {
-  final boldRegex = RegExp(r'\*(.*?)\*');
-  if (text.contains(boldRegex)) {
-    List<String> splitedText = [];
-    final matches = boldRegex.allMatches(text);
-    int start = 0;
-    for (final match in matches) {
-      if (start != match.start) {
-        splitedText.add(text.substring(start, match.start));
+List<String> splitText(String pattern, List<String> formattedText) {
+  final regex = RegExp(pattern);
+  final List<String> splitedText = [];
+  for (final String text in formattedText) {
+    if (text.contains(regex)) {
+      final matches = regex.allMatches(text);
+      int start = 0;
+      for (final match in matches) {
+        if (start != match.start) {
+          splitedText.add(text.substring(start, match.start));
+        }
+        splitedText.add(text.substring(match.start, match.end));
+        start = match.end;
       }
-      splitedText.add(text.substring(match.start, match.end));
-      start = match.end;
+      if (start != text.length) {
+        splitedText.add(text.substring(start, text.length));
+      }
+    } else {
+      splitedText.add(text);
     }
-    if (start != text.length) {
-      splitedText.add(text.substring(start, text.length));
-    }
-    return splitedText;
   }
-  return [text];
+  return splitedText;
+}
+
+/// split all pattern in text into a list of strings
+List<String> splitAllPattern(String text) {
+  List<String> formattedText = [text];
+  for (final TextPlusType type in TextPlusType.values) {
+    if (type == TextPlusType.none) continue;
+    formattedText = splitText(type.pattern, formattedText);
+  }
+  return formattedText;
 }
