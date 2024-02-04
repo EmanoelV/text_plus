@@ -1,16 +1,22 @@
-# TextPlus
+# Project Title
 
-A text widget with easy use of text styles.
+## Table of Contents
 
-## About TextPlus
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Contributing](../CONTRIBUTING.md)
 
-TextPlus is a text widget that allows you to easily use text styles. It is a wrapper around the `Text` widget and provides a more convenient way to use text styles.
+## About <a name = "about"></a>
 
-## Usage
-Is very simple to use, just import the package and use the `TextPlus` widget.
+This pakcage is a wrapper for the Text widget that allows you to use the same widget with different styles in the same string. It is useful for when you want to use different styles in the same text, such as bold, italic, underline, etc.
 
-```
-import 'package:text_plus/text_plus.dart';
+## Usage <a name = "usage"></a>
 
-TextPlus('Hello *world*!, this is *bold* text *example*.');
+```dart
+TextPlus(
+    'Hello _ world_!, this is *simple* example *text* with _multistyles_',
+    style: TextStyle(fontSize: 64),
+    textAlign: TextAlign.center,
+)
 ```
